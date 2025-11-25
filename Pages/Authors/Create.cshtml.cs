@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Grama_Razvan_Lab2.Data;
 using Grama_Razvan_Lab2.Models;
 
-namespace Grama_Razvan_Lab2.Pages.Publisher
+namespace Grama_Razvan_Lab2.Pages.Authors
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace Grama_Razvan_Lab2.Pages.Publisher
         }
 
         [BindProperty]
-        public Publisher Publisher { get; set; } = default!;
+        public Author Author { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace Grama_Razvan_Lab2.Pages.Publisher
                 return Page();
             }
 
-            _context.Publisher.Add(Publisher);
+            _context.Author.Add(Author);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

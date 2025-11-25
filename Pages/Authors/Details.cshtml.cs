@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Grama_Razvan_Lab2.Data;
 using Grama_Razvan_Lab2.Models;
 
-namespace Grama_Razvan_Lab2.Pages.Publisher
+namespace Grama_Razvan_Lab2.Pages.Authors
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace Grama_Razvan_Lab2.Pages.Publisher
             _context = context;
         }
 
-        public Publisher Publisher { get; set; } = default!;
+        public Author Author { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,14 +28,14 @@ namespace Grama_Razvan_Lab2.Pages.Publisher
                 return NotFound();
             }
 
-            var publisher = await _context.Publisher.FirstOrDefaultAsync(m => m.ID == id);
-            if (publisher == null)
+            var author = await _context.Author.FirstOrDefaultAsync(m => m.ID == id);
+            if (author == null)
             {
                 return NotFound();
             }
             else
             {
-                Publisher = publisher;
+                Author = author;
             }
             return Page();
         }

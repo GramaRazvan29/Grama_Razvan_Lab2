@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Grama_Razvan_Lab2.Data;
 using Grama_Razvan_Lab2.Models;
 
-namespace Grama_Razvan_Lab2.Pages.Publisher
+namespace Grama_Razvan_Lab2.Pages.Publishers
 {
     public class IndexModel : PageModel
     {

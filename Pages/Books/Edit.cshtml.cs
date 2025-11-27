@@ -30,17 +30,18 @@ namespace Grama_Razvan_Lab2.Pages.Books
                 return NotFound();
             }
 
-           var book = await _context.Book
+             Book = await _context.Book
             .Include(b => b.Publisher)
+            .Include(b => b.Author)
             .Include(b => b.BookCategories).ThenInclude(b => b.Category)
             .AsNoTracking()
             .FirstOrDefaultAsync(m => m.ID == id); 
-            if (book == null)
+            if (Book == null)
             {
                 return NotFound();
             }
             PopulateAssignedCategoryData(_context, Book);
-            Book = book;
+            
             ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID","PublisherName");
             ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "ID", "FirstName");
             return Page();
@@ -58,6 +59,7 @@ selectedCategories)
             //se va include Author conform cu sarcina de la lab 2
             var bookToUpdate = await _context.Book
             .Include(i => i.Publisher)
+            .Include(b => b.Author)
             .Include(i => i.BookCategories)
             .ThenInclude(i => i.Category)
             .FirstOrDefaultAsync(s => s.ID == id);

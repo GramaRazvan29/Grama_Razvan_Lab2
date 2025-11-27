@@ -19,13 +19,11 @@ namespace Grama_Razvan_Lab2.Pages.Categories
             _context = context;
         }
 
-        public IList<BookCategory> BookCategory { get;set; } = default!;
+        public IList<Category> Category { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            BookCategory = await _context.BookCategory
-                .Include(b => b.Book)
-                .Include(b => b.Category).ToListAsync();
+            Category = await _context.Category.ToListAsync();
         }
     }
 }
